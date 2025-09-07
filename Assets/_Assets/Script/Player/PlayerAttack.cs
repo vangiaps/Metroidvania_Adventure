@@ -48,9 +48,11 @@ public class PlayerAttack : MonoBehaviour
     public void AttackDown()
     {
         animator.SetTrigger("AttackDown");
+        AudioManager.Instance.Attack(2);
     }  
     public void AttackUp()
     {
         animator.SetTrigger("AttackUp");
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.attackUpSound);
     }
 }

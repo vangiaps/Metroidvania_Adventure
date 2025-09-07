@@ -6,7 +6,7 @@ public class PlayerHealth : Damageable
 {
     public Animator animator;
     public Move move;
-    [SerializeField] private int _health = 5;
+    [SerializeField] private int _health = 6;
 
     private void Awake()
     {
@@ -20,10 +20,13 @@ public class PlayerHealth : Damageable
     protected override void Hit()
     {
         animator.SetTrigger("Hit");
+        FindAnyObjectByType<HealthDisplay>().UpdateHp(health);
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.hitSound);
     }
     protected override void Die()
     {
         move.speed = 0;
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.deadSound);
         animator.SetTrigger("Die");
         GameObject.Destroy(gameObject, 1f);
     }
