@@ -5,11 +5,11 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     private RespawnPoint respawnPoint;
-    public BoxCollider2D collider2D;
+    public BoxCollider2D boxCollider2D;
 
     private void Awake()
     {
-        collider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnPoint>();
     }
 
@@ -18,7 +18,7 @@ public class CheckPoint : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             respawnPoint.checkPoint = this.gameObject;
-            collider2D.enabled = false;
+            boxCollider2D.enabled = false;
         }
     }
 }

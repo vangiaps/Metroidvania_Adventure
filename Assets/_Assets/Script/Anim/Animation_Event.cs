@@ -37,4 +37,42 @@ public class Animation_Event : MonoBehaviour
     {
         IsAttack = false;
     }
+
+    // audio sound
+    public void SoundAttack1()
+    {
+        AudioManager.Instance.Attack(0);
+    }   
+    public void SoundAttack2()
+    {
+        AudioManager.Instance.Attack(1);
+    }    
+    public void SoundAttack3()
+    {
+        AudioManager.Instance.Attack(2);
+    }   
+    public void SoundAttack4()
+    {
+        AudioManager.Instance.Attack(3);
+    }
+    public void FootStep1()
+    {
+        AudioManager.Instance.Footstep(0);
+    }    
+    public void FootStep2()
+    {
+        AudioManager.Instance.Footstep(1);
+    }   
+    public void FootStep3()
+    {
+        AudioManager.Instance.Footstep(2);
+    } 
+    public void FootStep4()
+    {
+        AudioManager.Instance.Footstep(3);
+    } 
+    public void Appear()
+    {
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.appearSound);
+    }
 }

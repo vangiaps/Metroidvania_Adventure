@@ -358,7 +358,7 @@ MonoBehaviour:
   health: 10
   animator: {fileID: 0}
   move: {fileID: 0}
-  _health: 5
+  _health: 6
 --- !u!1 &8238083254574347991
 GameObject:
   m_ObjectHideFlags: 0

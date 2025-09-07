@@ -61,12 +61,14 @@ public class Move : MonoBehaviour
         if (InputManager.Instance.JumpInput() && _isGrounded)
         {
             this.Jump();
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSound);
             canDoubleJump = true;
         }
         else if (InputManager.Instance.JumpInput() && canDoubleJump)
         {
             jumpPoint = transform.position;
             this.Jump();
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.doubleJumpSound);
             canDoubleJump = false;
         }
         // dash
@@ -98,6 +100,9 @@ public class Move : MonoBehaviour
     private IEnumerator DoDash(Vector2 dir)
     {
         isDashing = true;
+        //sound
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.dashSound);
+        //
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(dir.x * dashSpeed, rb.velocity.y);
