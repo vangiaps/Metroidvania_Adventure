@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 3016686816768933056}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,9 +267,13 @@ MonoBehaviour:
   rb: {fileID: 1860010864749308696}
   baseSpeed: 2
   speed: 2
+  dashSpeed: 5
+  dashDuration: 0.2
+  dashCooldown: 0.5
   jumpForce: 3.2
   canDoubleJump: 0
   jumpPoint: {x: 0, y: 0, z: 0}
+  isDashing: 0
   direction: {x: 0, y: 0}
   groundCheck: {fileID: 3553404408968242933}
   groundDistance: 0.17
@@ -339,7 +343,6 @@ MonoBehaviour:
   animator: {fileID: 7738907795435258548}
   animation_Event: {fileID: 5470634144263994917}
   comboResetTime: 1
-  damage: 1
 --- !u!114 &3016686816768933056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   animator: {fileID: 0}
+  move: {fileID: 0}
   _health: 5
 --- !u!1 &8238083254574347991
 GameObject:
@@ -396,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4332679692909804266}
   - component: {fileID: 4880516805435713870}
+  - component: {fileID: 331014067744911961}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -463,3 +468,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &331014067744911961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967608190321705204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3f2c908f43a0b408e3c2c882997a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

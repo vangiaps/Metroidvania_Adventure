@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerHealth : Damageable
 {
     public Animator animator;
-    public MoveMent moveMent;
+    public Move move;
     [SerializeField] private int _health = 5;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        moveMent = GetComponent<MoveMent>();
+        move = GetComponent<Move>();
     }
     private void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerHealth : Damageable
     }
     protected override void Die()
     {
-        moveMent.speed = 0;
+        move.speed = 0;
         animator.SetTrigger("Die");
         GameObject.Destroy(gameObject, 1f);
     }
