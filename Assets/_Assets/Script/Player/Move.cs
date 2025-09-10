@@ -5,19 +5,20 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public Rigidbody2D rb;
-
+    [Header("Cac_gtri_cho_chuc_nang_nhay_va_di_chuyen")]
     public float baseSpeed = 2f;
     public float speed;
-    public float dashSpeed = 5f;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 0.5f;
     public float jumpForce = 2f;
     public bool canDoubleJump;
     public Vector3 jumpPoint;
-
+    [Header("Thoi_gian_Dash_va_thoi_gian_hoi_dash")]
+    public float dashSpeed = 5f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 0.5f;
     public bool isDashing = false;
     float lastDashTime = -999f;
 
+    [Header("Raycast_de_phat_hien_cham_mat_dat_va_tuong")]
     public Vector2 direction;
     Vector2 boxSize;
 

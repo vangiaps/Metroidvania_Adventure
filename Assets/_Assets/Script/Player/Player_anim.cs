@@ -50,6 +50,15 @@ public class Player_anim : MonoBehaviour
         {
             animator.SetTrigger("Dash");
         } 
+        //
+        if(move.rb.velocity.y < 0 && !move._isGrounded)
+        {
+            animator.SetBool("Fall", true);
+        }
+        else
+        {
+            animator.SetBool("Fall", false);
+        }
     }
     public virtual void SetScale()
     {
