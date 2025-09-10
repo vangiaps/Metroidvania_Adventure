@@ -200,6 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015633}
+  - component: {fileID: 7015634}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -227,6 +228,21 @@ Transform:
   - {fileID: 1999778684}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7015634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e302252c6aa61a458777c7728c43cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyListChild: []
+  item: {fileID: 779176639587936384, guid: 0aa4e4d52b38dd24b9f744830a4e1703, type: 3}
+  isSpawn: 0
 --- !u!1 &23032068
 GameObject:
   m_ObjectHideFlags: 0
@@ -10255,30 +10271,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2685736823964435844, guid: aee6d1868044e5d40a5e61b24f3b521f, type: 3}
   m_PrefabInstance: {fileID: 109773839}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1231311790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7738907795435258547, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
-  m_PrefabInstance: {fileID: 1825609822}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1231311801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231311790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7521b05a41a482e479607b5f34512ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gems:
-  - {fileID: 377485986}
-  - {fileID: 1699300655}
-  - {fileID: 688233001}
-  - {fileID: 207406410}
-  - {fileID: 1752393428}
-  - {fileID: 1993825010}
 --- !u!1 &1275680359
 GameObject:
   m_ObjectHideFlags: 0
@@ -12339,6 +12331,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6139562408726467024, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
+      propertyPath: gems.Array.data[0]
+      value: 
+      objectReference: {fileID: 377485986}
+    - target: {fileID: 6139562408726467024, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
+      propertyPath: gems.Array.data[1]
+      value: 
+      objectReference: {fileID: 1699300655}
+    - target: {fileID: 6139562408726467024, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
+      propertyPath: gems.Array.data[2]
+      value: 
+      objectReference: {fileID: 688233001}
+    - target: {fileID: 6139562408726467024, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
+      propertyPath: gems.Array.data[3]
+      value: 
+      objectReference: {fileID: 207406410}
+    - target: {fileID: 6139562408726467024, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
+      propertyPath: gems.Array.data[4]
+      value: 
+      objectReference: {fileID: 1752393428}
+    - target: {fileID: 6139562408726467024, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
+      propertyPath: gems.Array.data[5]
+      value: 
+      objectReference: {fileID: 1993825010}
     - target: {fileID: 7738907795435258547, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -12386,10 +12402,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7738907795435258547, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1231311801}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
 --- !u!1 &1832547721
 GameObject:
