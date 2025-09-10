@@ -129,3 +129,6 @@ sysinfo.txt
 ExportedObj/
 .consulo/
 >>>>>>> 6456704 (Unity_project)
+# mở .gitignore và thêm dòng này
+UserSettings/
+

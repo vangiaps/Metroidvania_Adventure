@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     private int comboIndex = 0;
     private float lastAttackTime;
     public float comboResetTime = 1f;
-    public int damage = 1;
+
     private void Update()
     {
         this.GetInput();
@@ -48,19 +48,11 @@ public class PlayerAttack : MonoBehaviour
     public void AttackDown()
     {
         animator.SetTrigger("AttackDown");
+        AudioManager.Instance.Attack(2);
     }  
     public void AttackUp()
     {
         animator.SetTrigger("AttackUp");
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
-        
-        if (enemyHealth != null)
-        {
-            enemyHealth.TakeDamage(this.damage);
-        }
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.attackUpSound);
     }
 }
