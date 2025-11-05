@@ -183,11 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a1f2a587600aa4c8e83d99c9699d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   animator: {fileID: 1900813444538668844}
   moveMent: {fileID: 0}
   cover: {fileID: 0}
-  startHealth: 10
+  startHealth: 3
 --- !u!114 &3471386160398853231
 MonoBehaviour:
   m_ObjectHideFlags: 0
