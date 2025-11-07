@@ -70,7 +70,7 @@ public class Animation_Event : MonoBehaviour
     public void FootStep4()
     {
         AudioManager.Instance.Footstep(3);
-    } 
+    }
     public void Appear()
     {
         AudioManager.Instance.PlaySfx(AudioManager.Instance.appearSound);
