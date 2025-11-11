@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public abstract class Move : MonoBehaviour
 {
     public Rigidbody2D rb;
     [Header("Cac_gtri_cho_chuc_nang_nhay_va_di_chuyen")]
@@ -54,7 +54,7 @@ public class Move : MonoBehaviour
     {
         this.Movement();
     }
-    public void GetInput()
+    public virtual void GetInput()
     {
         // Movement
         this.direction = InputManager.Instance.GetMovementInput();
@@ -62,16 +62,17 @@ public class Move : MonoBehaviour
         if (InputManager.Instance.JumpInput() && _isGrounded)
         {
             this.Jump();
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSound);
-            canDoubleJump = true;
+            this.canDoubleJump = true;
+             AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSound);
         }
-        else if (InputManager.Instance.JumpInput() && canDoubleJump)
-        {
-            jumpPoint = transform.position;
-            this.Jump();
-            AudioManager.Instance.PlaySfx(AudioManager.Instance.doubleJumpSound);
-            canDoubleJump = false;
-        }
+        //else if (InputManager.Instance.JumpInput() && canDoubleJump)
+        //{
+        //    jumpPoint = transform.position;
+        //    this.Jump();
+        //    AudioManager.Instance.PlaySfx(AudioManager.Instance.doubleJumpSound);
+        //    canDoubleJump = false;
+        //}
+
         // dash
         if (InputManager.Instance.DashInput() && Time.time > lastDashTime + dashCooldown)
         {
@@ -94,9 +95,10 @@ public class Move : MonoBehaviour
 
         }
     }
-    void Jump()
+    protected virtual void Jump()
     {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        Debug.Log("nhay");
     }
     private IEnumerator DoDash(Vector2 dir)
     {

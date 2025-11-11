@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 7738907795435258548}
   - component: {fileID: 1559893271426919063}
   - component: {fileID: 1860010864749308696}
-  - component: {fileID: 7814884238788226052}
+  - component: {fileID: 6029932313391288869}
   - component: {fileID: 8952072614335214888}
   - component: {fileID: 1735493386946632768}
   - component: {fileID: 5470634144263994917}
@@ -253,7 +253,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7814884238788226052
+--- !u!114 &6029932313391288869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,13 +262,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7738907795435258547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbba7216974c6e429ef7e4e8148d4e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f933fc7d1309724eb0bcdd59ea9ec7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1860010864749308696}
   baseSpeed: 2
-  speed: 2
-  jumpForce: 3.2
+  speed: 0
+  jumpForce: 2
   canDoubleJump: 0
   jumpPoint: {x: 0, y: 0, z: 0}
   dashSpeed: 5
@@ -280,7 +280,7 @@ MonoBehaviour:
   groundDistance: 0.17
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   _isGrounded: 0
   wallCheckUp: {fileID: 4300754661904168489}
   wallCheckDown: {fileID: 1354460961599955955}
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7738907795435258548}
-  move: {fileID: 7814884238788226052}
+  move: {fileID: 0}
   animation_Event: {fileID: 0}
   secondaryDirection: {x: 0, y: 0, z: 0}
   isRunTurn: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8fbd5f577f6364d83b7b45cb136ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 7814884238788226052}
+  move: {fileID: 0}
   player_Anim: {fileID: 0}
   IsAttack: 0
 --- !u!114 &3884985618183383927
