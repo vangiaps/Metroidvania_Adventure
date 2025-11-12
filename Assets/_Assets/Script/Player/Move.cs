@@ -126,8 +126,9 @@ public abstract class Move : MonoBehaviour
     //KIEM_TRA_CHAM_DAT
     void RayCastCheck_Jump()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f ,Vector2.down, groundDistance, groundLayer);
-        _isGrounded = hit.collider != null;
+        //RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f ,Vector2.down, groundDistance, groundLayer);
+        //_isGrounded = hit.collider != null;
+        _isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.17f, groundLayer);
 
         Debug.DrawRay(transform.position, groundDistance * Vector2.down, Color.red);
     }

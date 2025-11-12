@@ -44,7 +44,6 @@ public class PlayerAttack : MonoBehaviour
         comboIndex++;
         if (comboIndex > 4) comboIndex = 1;
         animator.SetTrigger("Attack" + comboIndex);
-        Debug.Log("atack" + comboIndex);
     }
     public void AttackDown()
     {

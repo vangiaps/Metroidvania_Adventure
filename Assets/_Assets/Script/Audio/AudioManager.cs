@@ -4,11 +4,9 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Audio_Source_Gameobj")]
     public static AudioManager Instance;
-    public AudioSource musicSource;
     public AudioSource sfxSource;
 
     [Header("Sound_chung_cua_player")]
-    public AudioClip music;
     [SerializeField] public AudioClip[] attackSound;
     [SerializeField] public AudioClip[] footstepSoound;
     public AudioClip hitSound;
@@ -36,11 +34,6 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
-        musicSource.clip = music;
-        musicSource.Play();
     }
 
     public void Attack(int Index)
