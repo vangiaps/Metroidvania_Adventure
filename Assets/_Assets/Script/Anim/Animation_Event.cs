@@ -73,6 +73,6 @@ public class Animation_Event : MonoBehaviour
     }
     public void Appear()
     {
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.appearSound);
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.appearSound);   
     }
 }
