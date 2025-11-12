@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Move : MonoBehaviour
 {
     public Rigidbody2D rb;
+
+    public Player_anim player_Anim;
     [Header("Cac_gtri_cho_chuc_nang_nhay_va_di_chuyen")]
     public float baseSpeed = 2f;
     public float speed;
@@ -33,45 +36,39 @@ public abstract class Move : MonoBehaviour
     bool _isWallUp;
     bool _isWallDown;
 
-
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        player_Anim = gameObject.GetComponent<Player_anim>();
     }
     private void Start()
     {
         this.speed = this.baseSpeed;
         
     }
-    private void Update()
+    protected virtual void Update()
     {
         this.boxSize = GetComponent<Collider2D>().bounds.size;
         this.GetInput();
+        this.Scale();
         this.RayCastCheck_Jump();
         RayCastCheck_Wall();
     }
+
+    public void Scale()
+    {
+        player_Anim.SetBoolFall(rb.velocity.y, this._isGrounded);
+    }
+
     private void FixedUpdate()
     {
         this.Movement();
     }
+    
     public virtual void GetInput()
     {
         // Movement
         this.direction = InputManager.Instance.GetMovementInput();
-        // Jump
-        if (InputManager.Instance.JumpInput() && _isGrounded)
-        {
-            this.Jump();
-            this.canDoubleJump = true;
-             AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSound);
-        }
-        //else if (InputManager.Instance.JumpInput() && canDoubleJump)
-        //{
-        //    jumpPoint = transform.position;
-        //    this.Jump();
-        //    AudioManager.Instance.PlaySfx(AudioManager.Instance.doubleJumpSound);
-        //    canDoubleJump = false;
-        //}
 
         // dash
         if (InputManager.Instance.DashInput() && Time.time > lastDashTime + dashCooldown)
@@ -84,7 +81,11 @@ public abstract class Move : MonoBehaviour
     }
     void Movement()
     {
+        //NEU_DANG_DASH_THI_HUY_DI_CHUYEN
         if (isDashing) return;
+
+        //CHAM_TUONG_THI_DUNG_LAI
+        //CHI_CHAY_ANIMATION
         if (_isWallUp ||_isWallDown)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -94,17 +95,17 @@ public abstract class Move : MonoBehaviour
         rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
 
         }
-    }
-    protected virtual void Jump()
-    {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        Debug.Log("nhay");
+        //ANIMATION
+        player_Anim.SetSpeed(direction.sqrMagnitude);
+
     }
     private IEnumerator DoDash(Vector2 dir)
     {
         isDashing = true;
         //sound
         AudioManager.Instance.PlaySfx(AudioManager.Instance.dashSound);
+        //ANIMATION
+        player_Anim.TriggerDash(isDashing);
         //
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -119,14 +120,19 @@ public abstract class Move : MonoBehaviour
         // Sau dash: dừng ngang hoặc trả về velocity bình thường
         rb.velocity = new Vector2(0f, rb.velocity.y);
         isDashing = false;
+        player_Anim.TriggerDash(isDashing);
     }
+
+    //KIEM_TRA_CHAM_DAT
     void RayCastCheck_Jump()
     {
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f ,Vector2.down, groundDistance, groundLayer);
         _isGrounded = hit.collider != null;
 
         Debug.DrawRay(transform.position, groundDistance * Vector2.down, Color.red);
-    }void RayCastCheck_Wall()
+    }
+    //KHIEM_TRA_CO_CHAM_TUONG
+    void RayCastCheck_Wall()
     {
         _isWallUp = Physics2D.Raycast(wallCheckUp.position, Vector2.right* Mathf.Sign(Input.GetAxisRaw("Horizontal")), wallDistance, groundLayer);
         _isWallDown = Physics2D.Raycast(wallCheckDown.position, Vector2.right* Mathf.Sign(Input.GetAxisRaw("Horizontal")), wallDistance, groundLayer);
