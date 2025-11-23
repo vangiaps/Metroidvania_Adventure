@@ -36,18 +36,21 @@ public class InputManager : MonoBehaviour
     }
     public bool AttackInput()
     {
-        //return (Input.GetKeyDown(KeyCode.J));
-        return (Input.GetMouseButton(0));
+        return (Input.GetKeyDown(KeyCode.J));
+        //return (Input.GetMouseButton(0));
     }
+
+    // attack up
     public bool AttackInput1()
     {
-        //return (Input.GetKeyDown(KeyCode.J));
-        return (Input.GetMouseButton(1));
+        return (Input.GetKeyDown(KeyCode.I));
+        //return (Input.GetMouseButton(1));
     }    
+    // attack down
     public bool AttackInput2()
     {
-        //return (Input.GetKeyDown(KeyCode.J));
-        return (Input.GetKey(KeyCode.LeftControl));
+        return (Input.GetKeyDown(KeyCode.K));
+        //return (Input.GetKey(KeyCode.LeftControl));
     }
 }
 
