@@ -273,7 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charater2: {fileID: 1704124895}
-  Ui: {fileID: 780612076}
+  _maxHealth: 6
+  currentHealth: 0
 --- !u!4 &10129834
 Transform:
   m_ObjectHideFlags: 0
@@ -9727,43 +9728,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1109575992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7738907795435258547, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
-  m_PrefabInstance: {fileID: 1825609822}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1109575993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109575992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efaa129a36ad1e4c9ee2a9bf5d7d10a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfxSource: {fileID: 1363861722}
-  attackSound:
-  - {fileID: 8300000, guid: dd97ab66b8e26704a9161240c719112f, type: 3}
-  - {fileID: 8300000, guid: 678ca624759f95c4794c0254c159a7b8, type: 3}
-  - {fileID: 8300000, guid: 2622ee13b803a5c448b97b3cfd653ef1, type: 3}
-  - {fileID: 8300000, guid: c6337f929cb447e4b922a3944012995b, type: 3}
-  footstepSoound:
-  - {fileID: 8300000, guid: 7f49a6f20a43f2d4bad46bf20f42a33b, type: 3}
-  - {fileID: 8300000, guid: f5cff3a07d0cb5049a1c4639942f0402, type: 3}
-  - {fileID: 8300000, guid: 18cebfc9114696f4ba0d57a1135693d8, type: 3}
-  - {fileID: 8300000, guid: fee9c69301b8e6f449672c3be9b41413, type: 3}
-  hitSound: {fileID: 8300000, guid: 617a1031816f2564a8f098f244fbbc0e, type: 3}
-  dashSound: {fileID: 8300000, guid: 224f38b142b7ca3478b1f7ed9219c502, type: 3}
-  deadSound: {fileID: 8300000, guid: bc16f3fee0095b0488b63b9334fdca21, type: 3}
-  jumpSound: {fileID: 8300000, guid: 67eed7f4c49b1ff46a45c3cdae2885dd, type: 3}
-  appearSound: {fileID: 8300000, guid: 6c0266075605a964381ae6d8e3d4b47f, type: 3}
-  doubleJumpSound: {fileID: 8300000, guid: 1653ba6ea873f074991297f620a07779, type: 3}
-  attackUpSound: {fileID: 8300000, guid: 8fb6e5d7ae4756d47b56bf18b4704c9c, type: 3}
-  DeadSound: {fileID: 8300000, guid: 97e3a7379168ccc40ad3eabef8775828, type: 3}
-  HitSound: {fileID: 8300000, guid: 65b27a709ea8ab242b0cc2a5b1c92100, type: 3}
 --- !u!1001 &1119337579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10707,11 +10671,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 274018806496075588, guid: dd184056eae3a654cab3d6f592640c85, type: 3}
   m_PrefabInstance: {fileID: 1342719594}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1363861722 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4743911999349649223, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
-  m_PrefabInstance: {fileID: 1825609822}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380194723
 GameObject:
@@ -12416,10 +12375,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7738907795435258547, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1109575993}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f35b2945ed4bf4aa5eebac283c3137, type: 3}
 --- !u!1 &1832547721
 GameObject:

@@ -6,13 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     [SerializeField] private GameObject charater2;
-    [SerializeField] private GameObject Ui;
 
+    public int _maxHealth = 6;
+    public int currentHealth;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+        instance = this;
+        GameObject.DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     private void Start()
     {
-        GameObject.DontDestroyOnLoad(this);
-        GameObject.DontDestroyOnLoad(Ui);
+        currentHealth = _maxHealth;
     }
 
     public void displayCharater()
