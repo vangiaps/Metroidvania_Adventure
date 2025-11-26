@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        currentHealth = _maxHealth;
 
     }
     private void Start()
     {
-        currentHealth = _maxHealth;
     }
 
     public void displayCharater()

@@ -48,6 +48,8 @@ public abstract class Move : MonoBehaviour
     }
     protected virtual void Update()
     {
+        // Nếu object này đã bị hủy hoặc không còn tồn tại -> Dừng ngay
+        if (this == null || transform == null) return;
         this.boxSize = GetComponent<Collider2D>().bounds.size;
         this.GetInput();
         this.Scale();

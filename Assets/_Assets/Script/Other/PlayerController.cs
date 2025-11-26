@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using System;
 public class PlayerController : MonoBehaviour
 {
+    private HealthDisplay healthDisplay;
+
+    private void Awake()
+    {
+
+    }
     private void OnEnable()
     {
         // Đăng ký sự kiện: "Mỗi khi load scene xong, hãy gọi hàm OnSceneLoaded của tôi"
@@ -20,11 +27,25 @@ public class PlayerController : MonoBehaviour
     // Hàm này sẽ TỰ ĐỘNG chạy mỗi khi sang màn mới
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 1. TÌM CAMERA VÀ BẮT NÓ THEO DÕI MÌNH
-        SetupCamera();
-
-        // 2. ĐẶT LẠI VỊ TRÍ (Quan trọng! Xem giải thích bên dưới)
         MoveToSpawnPoint();
+        SetupCamera();
+        SetupHp();
+    }
+
+    private void SetupHp()
+    {
+        healthDisplay = FindAnyObjectByType<HealthDisplay>();
+        if (healthDisplay != null && GameManager.instance != null)
+        {
+            healthDisplay.Setup(GameManager.instance._maxHealth);
+
+            healthDisplay.UpdateHp(GameManager.instance.currentHealth);
+        }
+        else
+        {
+            if (healthDisplay == null) Debug.LogWarning("Sang màn mới nhưng không tìm thấy UI HealthDisplay!");
+        }
+
     }
 
     void SetupCamera()
@@ -44,6 +65,10 @@ public class PlayerController : MonoBehaviour
         if (spawnPoint != null)
         {
             transform.position = spawnPoint.transform.position;
+        }
+        else
+        {
+            Debug.Log("khong tim thay spawnPoint");
         }
     }
 }

@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 5470634144263994917}
   - component: {fileID: 3884985618183383927}
   - component: {fileID: 3016686816768933056}
-  - component: {fileID: 6139562408726467024}
   - component: {fileID: 8379663028890839843}
   - component: {fileID: 2197619124663355627}
   m_Layer: 0
@@ -480,29 +479,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  animator: {fileID: 0}
-  move: {fileID: 0}
+  animator: {fileID: 7738907795435258548}
+  move: {fileID: 6029932313391288869}
   _defaultMaxHealth: 6
   healthDisplay: {fileID: 0}
---- !u!114 &6139562408726467024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7738907795435258547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7521b05a41a482e479607b5f34512ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &8379663028890839843
 MonoBehaviour:
   m_ObjectHideFlags: 0
