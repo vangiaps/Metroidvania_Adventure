@@ -30,7 +30,7 @@ public class HealthDisplay : MonoBehaviour
                 gems.Add(newGem.GetComponent<Image>());
             }
         }
-
+        Debug.Log("khoi tao mau ");
     }
 
     public void UpdateHp(int currentHP)
@@ -38,7 +38,8 @@ public class HealthDisplay : MonoBehaviour
         if (gems == null || gems.Count == 0) Debug.Log("sdada" + gems.Count);
         for (int i = 0; i < gems.Count; i++)
         {
-
+            if (gems[i] == null)
+                continue;
             if (i < currentHP)
                 gems[i].enabled = true;   // hiện ngọc
             else

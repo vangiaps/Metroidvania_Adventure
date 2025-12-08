@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         healthDisplay = FindAnyObjectByType<HealthDisplay>();
         if (healthDisplay != null && GameManager.instance != null)
         {
-            healthDisplay.Setup(GameManager.instance._maxHealth);
+            healthDisplay.Setup(GameManager.instance.currentHealth);
 
             healthDisplay.UpdateHp(GameManager.instance.currentHealth);
         }

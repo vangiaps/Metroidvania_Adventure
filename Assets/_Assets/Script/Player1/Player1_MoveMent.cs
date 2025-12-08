@@ -21,9 +21,8 @@ public class Player1_MoveMent : Move
         }
          else if (InputManager.Instance.JumpInput() && canDoubleJump == true)
         {
-            jumpPoint = transform.position;
+            //jumpPoint = transform.position;
             this.Jump();
-            AudioManager.Instance.PlaySfx(AudioManager.Instance.doubleJumpSound);
             canDoubleJump = false;
         }
         base.GetInput();

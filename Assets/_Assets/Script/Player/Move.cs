@@ -13,7 +13,7 @@ public abstract class Move : MonoBehaviour
     public float speed;
     public float jumpForce = 2f;
     public bool canDoubleJump;
-    public Vector3 jumpPoint;
+    //public Vector3 jumpPoint;
     [Header("Thoi_gian_Dash_va_thoi_gian_hoi_dash")]
     public float dashSpeed = 5f;
     public float dashDuration = 0.2f;
