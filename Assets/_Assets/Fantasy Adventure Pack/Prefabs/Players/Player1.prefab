@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3553404408968242933}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point_Check_Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4300754661904168489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point_Check_Wall_Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 196949673135751065}
   - component: {fileID: 4743911999349649223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 3016686816768933056}
   - component: {fileID: 8379663028890839843}
   - component: {fileID: 2197619124663355627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -391,7 +391,6 @@ MonoBehaviour:
   speed: 0
   jumpForce: 3.5
   canDoubleJump: 0
-  jumpPoint: {x: 0, y: 0, z: 0}
   dashSpeed: 5
   dashDuration: 0.2
   dashCooldown: 0.5
@@ -536,7 +535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354460961599955955}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point_Check_Wall_Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +568,7 @@ GameObject:
   - component: {fileID: 4332679692909804266}
   - component: {fileID: 4880516805435713870}
   - component: {fileID: 331014067744911961}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

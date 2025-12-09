@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         MoveToSpawnPoint();
         SetupCamera();
-        SetupHp();
+        //SetupHp();
     }
 
     private void SetupHp()

@@ -97,12 +97,6 @@ public class Player_anim : MonoBehaviour
         if (move.direction.x !=0 )
         {
             float scale = move.direction.x > 0 ? 1 : -1;
-
-            //animation quay lai va bat dau chay
-            //if (scale != lastDirection && move.direction.magnitude > 0)
-            //{
-            //   animator.SetTrigger("RunTurn");
-            //}
             transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
             lastDirection = scale;
         }
