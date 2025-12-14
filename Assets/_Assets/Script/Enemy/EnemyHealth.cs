@@ -6,7 +6,6 @@ public class EnemyHealth : Damageable
 {
     public Animator animator;
     public MoveMent moveMent;
-    public GameObject cover;
     private BoxCollider2D boxCollider2D;
     private void Awake()
     {
@@ -33,6 +32,5 @@ public class EnemyHealth : Damageable
         animator.SetTrigger("die");
         AudioManager.Instance.PlaySfx(AudioManager.Instance.deadSound);
         GameObject.Destroy(gameObject, 1f);
-        GameObject.Destroy(cover, 1.5f);
     }
 }

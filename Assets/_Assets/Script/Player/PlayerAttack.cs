@@ -7,33 +7,42 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public Animation_Event animation_Event;
 
-    private int comboIndex = 0;
-    private float lastAttackTime;
+    protected int comboIndex = 0;
+    protected float lastAttackTime;
     public float comboResetTime = 1f;
+    private void Start()
+    {
+        if (animation_Event == null)
+            animation_Event = GetComponent<Animation_Event>();
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
 
-    private void Update()
+    protected void Update()
     {
         this.GetInput();
+
     }
-    void GetInput()
+    protected void GetInput()
     {
         if (Time.time - lastAttackTime > comboResetTime) comboIndex = 0;
             // Attack []
         if (InputManager.Instance.AttackInput() && !animation_Event.IsAttack)
         {
-            if (!InputManager.Instance.AttackInput2())
-            {
             this.Attack();
-
-            }
+            Debug.Log("sdasd");
         }
         if (InputManager.Instance.AttackInput1() && !animation_Event.IsAttack)
         {
             this.AttackDown();
+            Debug.Log("sdamkl;d");
         }
         if (InputManager.Instance.AttackInput2() && !animation_Event.IsAttack)
         {
             this.AttackUp();
+            Debug.Log("asdurtdasd");
         }
 
     }
@@ -50,9 +59,12 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("AttackDown");
         AudioManager.Instance.Attack(2);
     }  
-    public void AttackUp()
+    public virtual void AttackUp()
     {
-        animator.SetTrigger("AttackUp");
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.attackUpSound);
+
+    }
+    protected virtual void UseSkill()
+    {
+
     }
 }

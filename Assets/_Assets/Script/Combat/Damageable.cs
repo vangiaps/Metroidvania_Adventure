@@ -8,7 +8,6 @@ public abstract class Damageable : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         this.health -= damage;
-        Debug.Log(transform.name + " : " + health);
         Hit();
         if (health <= 0) Die();
     }

@@ -10,17 +10,20 @@ public class Player_anim : MonoBehaviour
     public Animation_Event animation_Event;
 
     public Vector3 secondaryDirection;
-    private float lastDirection = 0;
+    protected float lastDirection = 0;
     public bool isRunTurn = false;
-    private void Awake()
+    protected void Awake()
     {
-        move = GetComponent<Move>();
-        animation_Event = GetComponent<Animation_Event>();
+        if (animator == null)
+            animator = GetComponent<Animator>();
+        if (move == null)
+            move = GetComponent<Move>();
+        if (animation_Event == null)
+            animation_Event = GetComponent<Animation_Event>();
     }
 
-    private void Update()
+    protected void Update()
     {
-        //this.SetAnimator();
         this.SetScale();
     }
     
@@ -28,10 +31,9 @@ public class Player_anim : MonoBehaviour
     {
         animator.SetFloat("Speed", speed);
     }
-    //nhay
-    public void TriggerJump()
+    public virtual void TriggerJump()
     {
-        animator.SetTrigger("Jump");
+
     }
     public void TriggerDash(bool isDash)
     {
@@ -56,50 +58,13 @@ public class Player_anim : MonoBehaviour
         }
     }
 
-
-    //*/PHAN_DAU_TIEN*/
-
-    //public virtual void SetAnimator()
-    //{
-    //    if (move._isGrounded == true)
-    //    {
-    //        animator.SetFloat("Speed", move.direction.magnitude);
-    //    }
-    //    else
-    //    {
-    //        animator.SetFloat("Speed", 0);
-
-    //    }
-    //    //
-    //    if (InputManager.Instance.JumpInput() && isRunTurn == false)
-    //    {
-    //        animator.SetTrigger("DoubleJump");
-    //    }
-    //    //
-    //    if (move.isDashing)
-    //    {
-    //        animator.SetTrigger("Dash");
-    //    } 
-    //    //
-    //    if(move.rb.velocity.y < 0 && !move._isGrounded)
-    //    {
-    //        animator.SetBool("Fall", true);
-    //    }
-    //    else
-    //    {
-    //        animator.SetBool("Fall", false);
-    //    }
-    //}
-
     public virtual void SetScale()
     {
-        
         if (move.direction.x !=0 )
         {
             float scale = move.direction.x > 0 ? 1 : -1;
             transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
             lastDirection = scale;
         }
-
     }
 }

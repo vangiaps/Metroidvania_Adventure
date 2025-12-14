@@ -52,36 +52,6 @@ public class PlayerHealth : Damageable
             //}
         }
     }
-    private void Start()
-    {
-        //healthDisplay = FindAnyObjectByType<HealthDisplay>();
-        //if (GameManager.instance != null)
-        //{
-        //    // lấy màu từ gamemanager 
-        //    health = GameManager.instance._maxHealth;
-        //    //if (healthDisplay != null)
-        //    //{
-        //    //    healthDisplay.Setup(GameManager.instance._maxHealth);
-        //    //}
-        //}
-        //else
-        //{
-        //    // phòng trường hợp gamemanager không chay
-        //    health = _defaultMaxHealth;
-        //    //if(healthDisplay != null)
-        //    //{
-        //    //    healthDisplay.Setup(_defaultMaxHealth);
-        //    //}
-        //}
-        //////UpdateUI();
-    }
-    private void UpdateUI()
-    {
-        if (healthDisplay != null)
-        {
-            healthDisplay.UpdateHp(health);
-        }
-    }
     protected override void Hit()
     {
         if (GameManager.instance != null)

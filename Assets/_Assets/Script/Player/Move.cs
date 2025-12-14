@@ -144,5 +144,4 @@ public abstract class Move : MonoBehaviour
         Debug.DrawRay(wallCheckUp.position, wallDistance * Vector2.right * Mathf.Sign(Input.GetAxisRaw("Horizontal")), Color.cyan);
         Debug.DrawRay(wallCheckDown.position, wallDistance * Vector2.right * Mathf.Sign(Input.GetAxisRaw("Horizontal")), Color.cyan);
     }
-
 }

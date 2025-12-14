@@ -9,7 +9,6 @@ public class Music : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         musicSource.clip = music;
         musicSource.Play();
     }

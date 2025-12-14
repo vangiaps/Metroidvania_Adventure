@@ -6,49 +6,27 @@ using UnityEngine.SceneManagement;
 using System;
 public class PlayerController : MonoBehaviour
 {
-    private HealthDisplay healthDisplay;
-
-    private void Awake()
-    {
-
-    }
-    private void OnEnable()
+    protected void OnEnable()
     {
         // Đăng ký sự kiện: "Mỗi khi load scene xong, hãy gọi hàm OnSceneLoaded của tôi"
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         // Hủy đăng ký khi Player bị hủy (để tránh lỗi bộ nhớ)
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Hàm này sẽ TỰ ĐỘNG chạy mỗi khi sang màn mới
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    protected void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         MoveToSpawnPoint();
         SetupCamera();
-        //SetupHp();
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void SetupHp()
-    {
-        healthDisplay = FindAnyObjectByType<HealthDisplay>();
-        if (healthDisplay != null && GameManager.instance != null)
-        {
-            healthDisplay.Setup(GameManager.instance.currentHealth);
-
-            healthDisplay.UpdateHp(GameManager.instance.currentHealth);
-        }
-        else
-        {
-            if (healthDisplay == null) Debug.LogWarning("Sang màn mới nhưng không tìm thấy UI HealthDisplay!");
-        }
-
-    }
-
-    void SetupCamera()
+    protected void SetupCamera()
     {
 
         var vCam = FindAnyObjectByType<CinemachineVirtualCamera>();
@@ -59,7 +37,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MoveToSpawnPoint()
+    protected void MoveToSpawnPoint()
     {
         GameObject spawnPoint = GameObject.Find("SpawnPoint");
         if (spawnPoint != null)

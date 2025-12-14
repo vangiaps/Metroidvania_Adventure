@@ -7,18 +7,17 @@ using UnityEngine;
 public class EnemyLongRangeAttack : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private float attackRange = 3f;
+    [SerializeField] private float attackRange = 2f;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject arroePrefab;
     private float arrowSpeed = 3f;
 
     private Transform playerPosition;
-    // phong truong hop player thoat ra ngoai khi chua kip nem lao 
-    private Transform oldPosition;
+    private Vector2 direction;
 
 
-    public float fireRate = 1.5f;
+    public float fireRate = 0.5f;
     protected float lastShotTime;
 
     private void Start()
@@ -60,17 +59,15 @@ public class EnemyLongRangeAttack : MonoBehaviour
             Debug.Log(distance);
             float scale = distance > 0 ? 1 : -1;
             transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
+            // tinh huong tu sung -> player
+            direction = playerPosition.position - firePoint.position;
             // goi anim -> goi ham shoot
-            oldPosition = playerPosition;
             animator.SetTrigger("Shoot");
             lastShotTime = Time.time;
         }
     }
     public void Shoot()
     {
-        // tinh huong tu sung -> player
-        Vector2 direction = oldPosition.position - firePoint.position;
-
         // tinh goc xoay atan -> radian, chuyen tu radian ve do  
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 

@@ -6,73 +6,55 @@ public class Animation_Event : MonoBehaviour
 {
     public Move move;
     public Player_anim player_Anim;
-    public bool IsAttack;
+    public bool IsAttack = false;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         move = GetComponent<Move>();
         player_Anim = GetComponent<Player_anim>();
     }
-    public void Stop()
+    public virtual void Stop()
     {
         move.speed = 0;
     }   
-    public void Run()
+    public virtual void Run()
     {
         move.speed = move.baseSpeed;
     }
-    public void IsRunTurnF()
+    public virtual void IsRunTurnF()
     {
         player_Anim.isRunTurn = false;
     }     
-    public void IsRunTurnT()
+    public virtual void IsRunTurnT()
     {
         player_Anim.isRunTurn = true;
     }  
-    public void StartAttack()
+    public virtual void StartAttack()
     {
         IsAttack = true;
     }
-    public void EndAttack()
+    public virtual void EndAttack()
     {
         IsAttack = false;
     }
 
     // audio sound
-    public void SoundAttack1()
+    public virtual void PlayAttackSound(int index)
     {
-        AudioManager.Instance.Attack(0);
-    }   
-    public void SoundAttack2()
-    {
-        AudioManager.Instance.Attack(1);
-    }    
-    public void SoundAttack3()
-    {
-        AudioManager.Instance.Attack(2);
-    }   
-    public void SoundAttack4()
-    {
-        AudioManager.Instance.Attack(3);
+        if(AudioManager.Instance != null && index >= 0 && index< AudioManager.Instance.attackSound.Length)
+        {
+            AudioManager.Instance.Attack(index);
+        }
     }
-    public void FootStep1()
+    public virtual void PlayFootstepSound(int index)
     {
-        AudioManager.Instance.Footstep(0);
-    }    
-    public void FootStep2()
-    {
-        AudioManager.Instance.Footstep(1);
-    }   
-    public void FootStep3()
-    {
-        AudioManager.Instance.Footstep(2);
-    } 
-    public void FootStep4()
-    {
-        AudioManager.Instance.Footstep(3);
+        if (AudioManager.Instance != null && index >= 0 && index < AudioManager.Instance.footstepSoound.Length)
+        {
+            AudioManager.Instance.Footstep(index);
+        }
     }
-    public void Appear()
-    {
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.appearSound);   
+    public virtual void Appear()
+    {   
+
     }
 }

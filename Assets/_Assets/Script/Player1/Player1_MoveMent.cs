@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Player1_MoveMent : Move
 {
+    protected Player1Audio player1Audio;
+    protected Player1Anim player1Anim;
     public bool isJump;
 
+    private void Start()
+    {
+        if (player1Audio == null)
+            player1Audio = GetComponent<Player1Audio>();
+    }
     protected override void Update()
     {
         base.Update();
@@ -31,7 +38,8 @@ public class Player1_MoveMent : Move
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         player_Anim.TriggerJump();
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.jumpSound);
+        //AudioManager.Instance.PlaySfx(player1Audio.jumpSound);
+        AudioManager.Instance.PlaySfx(player1Audio.jumpSound);
         isJump = true;
     }
     // goi khi cham dat nhung animation jump van chay 

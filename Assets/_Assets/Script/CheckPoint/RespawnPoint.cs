@@ -10,14 +10,13 @@ public class RespawnPoint : MonoBehaviour
     private void Awake()
     {
         checkPoint = GameObject.FindGameObjectWithTag("CheckPoint");
-        player = GameObject.FindGameObjectWithTag("Player");
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
         if (collision.gameObject.CompareTag("Player"))
         {
+            player = GameObject.FindGameObjectWithTag("Player");
             player.transform.position = checkPoint.transform.position;
             playerHealth.TakeDamage(1);
         }

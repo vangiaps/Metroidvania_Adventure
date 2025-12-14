@@ -12,12 +12,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip dashSound;
     public AudioClip deadSound;
-    public AudioClip jumpSound;
 
-    [Header("Sound_rieng_player1")]
-    public AudioClip appearSound;
-    public AudioClip doubleJumpSound;
-    public AudioClip attackUpSound;
+    //[Header("Sound_rieng_player")]
+    //public AudioClip appearSound;
+    //public AudioClip attackUpSound;
 
     [Header("Sound_chung_cua_enemy (Enemy-Shared)")]
     [SerializeField] private AudioClip DeadSound;
@@ -30,23 +28,25 @@ public class AudioManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+    }
+    private void Update()
+    {
+        Debug.Log("van song");
     }
 
     public void Attack(int Index)
     {
         sfxSource.PlayOneShot(attackSound[Index]);
-    }  
+    }
     public void Footstep(int Index)
     {
         sfxSource.PlayOneShot(footstepSoound[Index]);
     }
-    public void PlaySfx(AudioClip sfx)
+    public virtual void PlaySfx(AudioClip sfx)
     {
-        sfxSource.clip = sfx;
-        sfxSource.PlayOneShot(sfx);
+        if (sfx != null)
+        {
+            sfxSource.PlayOneShot(sfx);
+        }
     }
 }
