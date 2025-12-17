@@ -32,17 +32,14 @@ public class PlayerAttack : MonoBehaviour
         if (InputManager.Instance.AttackInput() && !animation_Event.IsAttack)
         {
             this.Attack();
-            Debug.Log("sdasd");
         }
         if (InputManager.Instance.AttackInput1() && !animation_Event.IsAttack)
         {
             this.AttackDown();
-            Debug.Log("sdamkl;d");
         }
         if (InputManager.Instance.AttackInput2() && !animation_Event.IsAttack)
         {
             this.AttackUp();
-            Debug.Log("asdurtdasd");
         }
 
     }

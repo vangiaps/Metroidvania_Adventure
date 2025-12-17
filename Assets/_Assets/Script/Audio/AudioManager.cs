@@ -29,10 +29,6 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    private void Update()
-    {
-        Debug.Log("van song");
-    }
 
     public void Attack(int Index)
     {

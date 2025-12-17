@@ -8,11 +8,10 @@ public class EnemyAttack : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-        if (playerHealth != null)
+        PlayerDamageReceiver playerDamageReceiver = collision.gameObject.GetComponent<PlayerDamageReceiver>();
+        if (playerDamageReceiver != null)
         {
-            playerHealth.TakeDamage(this.damage);
+            playerDamageReceiver.OnHit(damage);
         }
     }
 }

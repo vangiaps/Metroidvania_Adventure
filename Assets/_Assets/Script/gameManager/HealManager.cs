@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : Damageable
+public class HealManager : Damageable
 {
     [Header("References")]
-    public Animator animator;
-    public Move move;
+    public static HealManager Instance;
+
 
     [SerializeField] private int _defaultMaxHealth = 6;
-    [SerializeField] HealthDisplay healthDisplay;
+    [SerializeField] public HealthDisplay healthDisplay;
 
+    public bool isDie = false;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        move = GetComponent<Move>();
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
     private void OnEnable()
     {
@@ -54,31 +57,15 @@ public class PlayerHealth : Damageable
     }
     protected override void Hit()
     {
+    
         if (GameManager.instance != null)
         {
             GameManager.instance.currentHealth = health;
         }
-        animator.SetTrigger("Hit");
         healthDisplay.UpdateHp(health);
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.hitSound);
     }
     protected override void Die()
     {
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.currentHealth = 0;
-        }
-        if(move != null)
-        {
-        move.speed = 0;
-            move.enabled = false;
-        }
-
-        var p1Move = GetComponent<Player1_MoveMent>();
-        if (p1Move != null) p1Move.enabled = false;
-        // am thanh 
-        AudioManager.Instance.PlaySfx(AudioManager.Instance.deadSound);
-        animator.SetTrigger("Die");
-        GameObject.Destroy(gameObject, 1f);
+        isDie = true;
     }
 }

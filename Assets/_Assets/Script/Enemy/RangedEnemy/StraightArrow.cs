@@ -12,12 +12,11 @@ public class StraightArrow : EnemyAttack
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        PlayerDamageReceiver playerDamageReceiver = collision.gameObject.GetComponent<PlayerDamageReceiver>();
 
-        if (playerHealth != null)
+        if (playerDamageReceiver != null)
         {
-            playerHealth.TakeDamage(this.damage);
-            Destroy(gameObject);
+            playerDamageReceiver.OnHit(damage);
         }
     }
 }

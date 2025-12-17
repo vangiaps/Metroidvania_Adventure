@@ -13,12 +13,12 @@ public class RespawnPoint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        PlayerDamageReceiver playerDamageReceiver = collision.gameObject.GetComponent<PlayerDamageReceiver>();
         if (collision.gameObject.CompareTag("Player"))
         {
             player = GameObject.FindGameObjectWithTag("Player");
             player.transform.position = checkPoint.transform.position;
-            playerHealth.TakeDamage(1);
+            playerDamageReceiver.OnHit(1);
         }
     }
 }

@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 10129834}
   - component: {fileID: 10129833}
   - component: {fileID: 10129835}
+  - component: {fileID: 10129836}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -232,6 +233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ce1e3ae66d08643adb8c3c54a4b26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &10129836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10129832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb56452a17f6cd944959143c55137dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &23032068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1698,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8379969873605351621, guid: ed1aab9cdeab5fa459272f7604291df0, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 427213254}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1692,6 +1710,11 @@ PrefabInstance:
 --- !u!1 &427213244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 422030592097535203, guid: ed1aab9cdeab5fa459272f7604291df0, type: 3}
+  m_PrefabInstance: {fileID: 427213243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &427213254 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 422030592097535202, guid: ed1aab9cdeab5fa459272f7604291df0, type: 3}
   m_PrefabInstance: {fileID: 427213243}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &433760093
@@ -11330,6 +11353,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1669251367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1669251369}
+  - component: {fileID: 1669251368}
+  m_Layer: 0
+  m_Name: HealManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1669251368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669251367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a609f29b94beb644fbcf5f7f437ba3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  _defaultMaxHealth: 6
+  healthDisplay: {fileID: 0}
+  isDie: 0
+--- !u!4 &1669251369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669251367}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.9013004, y: -0.23629987, z: -0.04089434}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1674762736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12816,3 +12887,4 @@ SceneRoots:
   - {fileID: 780612077}
   - {fileID: 108910247}
   - {fileID: 680119548}
+  - {fileID: 1669251369}

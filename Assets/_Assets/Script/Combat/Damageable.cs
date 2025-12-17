@@ -12,5 +12,5 @@ public abstract class Damageable : MonoBehaviour
         if (health <= 0) Die();
     }
     protected virtual void Hit() { }
-    protected abstract void Die();
+    protected virtual void Die() { }
 }
