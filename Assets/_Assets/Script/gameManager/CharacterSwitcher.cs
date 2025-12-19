@@ -7,9 +7,8 @@ public class CharacterSwitcher : MonoBehaviour
 {
     [SerializeField] private List<GameObject> player;
     private int currentIndex = 0;
-    public CinemachineVirtualCamera vCam;
 
-    private void Start()
+    private void Awake()
     {
         foreach (var p in player)
         {

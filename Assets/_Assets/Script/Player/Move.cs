@@ -29,11 +29,6 @@ public abstract class Move : MonoBehaviour
     public LayerMask groundLayer;
     public bool _isGrounded;
     
-    public Transform wallCheckUp;
-    public Transform wallCheckDown;
-    public float wallDistance = 0.1f;
-    protected bool _isWallUp;
-    protected bool _isWallDown;
 
     private void Awake()
     {
@@ -127,15 +122,5 @@ public abstract class Move : MonoBehaviour
         _isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.17f, groundLayer);
 
         Debug.DrawRay(transform.position, groundDistance * Vector2.down, Color.red);
-    }
-
-    //KHIEM_TRA_CO_CHAM_TUONG
-    protected virtual void RayCastCheck_Wall() {
-        _isWallUp = Physics2D.Raycast(wallCheckUp.position, Vector2.right * Mathf.Sign(Input.GetAxisRaw("Horizontal")), wallDistance, groundLayer);
-        _isWallDown = Physics2D.Raycast(wallCheckDown.position, Vector2.right * Mathf.Sign(Input.GetAxisRaw("Horizontal")), wallDistance, groundLayer);
-
-
-        Debug.DrawRay(wallCheckUp.position, wallDistance * Vector2.right * Mathf.Sign(Input.GetAxisRaw("Horizontal")), Color.cyan);
-        Debug.DrawRay(wallCheckDown.position, wallDistance * Vector2.right * Mathf.Sign(Input.GetAxisRaw("Horizontal")), Color.cyan);
     }
 }

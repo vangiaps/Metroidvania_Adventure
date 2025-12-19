@@ -35,11 +35,11 @@ public class PlayerAttack : MonoBehaviour
         }
         if (InputManager.Instance.AttackInput1() && !animation_Event.IsAttack)
         {
-            this.AttackDown();
+            this.AttackUp();
         }
         if (InputManager.Instance.AttackInput2() && !animation_Event.IsAttack)
         {
-            this.AttackUp();
+            this.AttackDown();
         }
 
     }
