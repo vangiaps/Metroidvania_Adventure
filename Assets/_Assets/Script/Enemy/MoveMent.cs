@@ -5,7 +5,9 @@ using UnityEngine.UIElements;
 
 public class MoveMent : MonoBehaviour
 {
+    [SerializeField] public Animator animator;
     public float speed = 0.2f;
+    public float currentSpeed;
     public Transform pos1;
     public Transform pos2;
     public bool isPos1 = true;
@@ -18,9 +20,13 @@ public class MoveMent : MonoBehaviour
         //lay vi tri co dinh cua pos1 va 2 
         positionA = pos1.position;
         positionB = pos2.position;
+        currentSpeed = speed;
+
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         this.Redirect();
     }
@@ -31,7 +37,7 @@ public class MoveMent : MonoBehaviour
             Move(positionA);
         }
         else if (transform.position.x == positionA.x && isPos1)
-        {
+        {                                                                                                                                                                             
             SetScale(-1);
             isPos1 = false;
         }
@@ -45,12 +51,17 @@ public class MoveMent : MonoBehaviour
             isPos1 = true;
         }
     }
-    void SetScale(float scale)
+    public virtual void StandWait()
+    {
+        
+    }
+    public void SetScale(float scale)
     {
         transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
     }
-    protected virtual void Move( Vector2 pos)
+    protected virtual void Move(Vector2 pos)
     {
-        transform.position = Vector2.MoveTowards(transform.position, pos, speed * Time.fixedDeltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, pos, currentSpeed * Time.deltaTime);
     }
+
 }

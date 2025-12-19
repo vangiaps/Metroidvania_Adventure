@@ -48,14 +48,15 @@ public class Player_anim : MonoBehaviour
     // lay_gia_tri_van_toc_roi_va_co_cham_dat_khong
     public void SetBoolFall(float velocity , bool isGrounded)
     {
-        if (velocity <= 0 && !isGrounded)
-        {
-            animator.SetBool("Fall", true);
-        }
-        else if (isGrounded)
-        {
-            animator.SetBool("Fall", false);
-        }
+        //if (velocity <= 0 && !isGrounded)
+        //{
+        //    animator.SetBool("Fall", true);
+        //}
+        //else if (isGrounded)
+        //{
+        //    animator.SetBool("Fall", false);
+        //}
+        animator.SetFloat("yVelocity", velocity);
     }
 
     public virtual void SetScale()

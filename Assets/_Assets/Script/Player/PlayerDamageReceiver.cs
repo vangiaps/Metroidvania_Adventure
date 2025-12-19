@@ -13,7 +13,6 @@ public class PlayerDamageReceiver : MonoBehaviour
     public void OnHit(int damage)
     {
         animator.SetTrigger("Hit");
-        Debug.Log("HIT");
         HealManager.Instance.TakeDamage(damage);
         if (HealManager.Instance != null)
         {

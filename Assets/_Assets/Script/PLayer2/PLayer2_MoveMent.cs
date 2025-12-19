@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class PLayer2_MoveMent : Move
 {
-    
 }

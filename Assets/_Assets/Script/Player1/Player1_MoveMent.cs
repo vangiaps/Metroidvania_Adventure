@@ -12,6 +12,8 @@ public class Player1_MoveMent : Move
     {
         if (player1Audio == null)
             player1Audio = GetComponent<Player1Audio>();
+        if (player1Anim == null)
+            player1Anim = GetComponent<Player1Anim>();
     }
     protected override void Update()
     {
@@ -21,24 +23,17 @@ public class Player1_MoveMent : Move
     // double jump
     public override void GetInput()
     {
-        if (InputManager.Instance.JumpInput() && _isGrounded)
+        base.GetInput();
+        if (InputManager.Instance.JumpInput() && canDoubleJump == true && !_isGrounded)
         {
-            this.Jump();
-            this.canDoubleJump = true;
-        }
-         else if (InputManager.Instance.JumpInput() && canDoubleJump == true)
-        {
-            //jumpPoint = transform.position;
-            this.Jump();
+            this.DoubleJump();
             canDoubleJump = false;
         }
-        base.GetInput();
     }
-    protected virtual void Jump()
+    protected void DoubleJump()
     {
+        player1Anim.TriggerJump();
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        player_Anim.TriggerJump();
-        //AudioManager.Instance.PlaySfx(player1Audio.jumpSound);
         AudioManager.Instance.PlaySfx(player1Audio.jumpSound);
         isJump = true;
     }
@@ -48,6 +43,7 @@ public class Player1_MoveMent : Move
         if (isJump == true && _isGrounded)
         {
             player_Anim.TriggerIsGround();
+            isJump = false;
         }
     }
 }

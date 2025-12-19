@@ -11,38 +11,51 @@ public class EnemyLongRangeAttack : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject arroePrefab;
+    [SerializeField] private MoveMent moveMent;
     private float arrowSpeed = 3f;
 
-    private Transform playerPosition;
-    private Vector2 direction;
+    protected Transform playerPosition;
+    protected Vector2 direction;
+    float currentScale;
+    private bool hasSavedScale = false;
 
 
     public float fireRate = 0.5f;
     protected float lastShotTime;
 
-    private void Start()
+    protected void Start()
     {
         if (animator == null)
         {
             animator = GetComponent<Animator>();
         }
+        if (moveMent == null)
+            moveMent = GetComponent<MoveMent>();
     }
-    private void Update()
+    protected void Update()
     {
         DetectPlayer();
-        if(playerPosition != null)
+        if (playerPosition != null)
         {
+            Debug.Log(currentScale);
             Attack();
         }
     }
 
-    private void DetectPlayer()
+    protected void DetectPlayer()
     {
         // Tạo một vòng tròn vô hình quét xem có Collider nào thuộc layer Player nằm trong đó không
         Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, layerMask);
-        if(hit != null)
+        if (hit != null)
         {
             playerPosition = hit.transform;
+            if (!hasSavedScale)
+            {
+                moveMent.currentSpeed = 0f;
+                currentScale = transform.localScale.x;
+                hasSavedScale = true;
+            }
+
         }
         else
         {
@@ -50,15 +63,14 @@ public class EnemyLongRangeAttack : MonoBehaviour
         }
     }
 
-    private void Attack()
+    protected void Attack()
     {
         // Thời gian chờ (Cooldown) = (1giây)/(Số viên đạn)
         if (Time.time > lastShotTime + 1f / fireRate)
         {
             float distance = transform.position.x - playerPosition.position.x;
-            Debug.Log(distance);
             float scale = distance > 0 ? 1 : -1;
-            transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
+            moveMent.SetScale(scale);
             // tinh huong tu sung -> player
             direction = playerPosition.position - firePoint.position;
             // goi anim -> goi ham shoot
@@ -79,7 +91,12 @@ public class EnemyLongRangeAttack : MonoBehaviour
         // gan van toc 
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.velocity = arrow.transform.right * arrowSpeed;
-
+        if (hasSavedScale && playerPosition == null) 
+        {
+            moveMent.SetScale(currentScale);
+            moveMent.currentSpeed = moveMent.speed;
+            hasSavedScale = false;
+        }
     }
 
     void OnDrawGizmos()
