@@ -17,7 +17,7 @@ public abstract class Move : MonoBehaviour
     [Header("Thoi_gian_Dash_va_thoi_gian_hoi_dash")]
     public float dashSpeed = 5f;
     public float dashDuration = 0.2f;
-    public float dashCooldown = 0.5f;
+    public float dashCooldown = 2f;
     public bool isDashing = false;
     float lastDashTime = -999f;
 

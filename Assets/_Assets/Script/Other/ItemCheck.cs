@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemCheck : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    public int index;
 
     private void Start()
     {
@@ -16,8 +17,8 @@ public class ItemCheck : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameObject.Destroy(gameObject);
-            gameManager.displayCharater();
+            gameManager.displayCharater(index);
+            Debug.Log(index);
         }
     }
-
 }

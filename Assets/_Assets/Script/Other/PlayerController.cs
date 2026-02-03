@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     // Hàm này sẽ TỰ ĐỘNG chạy mỗi khi sang màn mới
     protected void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!gameObject.activeSelf) return;
         DontDestroyOnLoad(gameObject);
         MoveToSpawnPoint();
         SetupCamera();

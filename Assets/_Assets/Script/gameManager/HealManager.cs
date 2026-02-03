@@ -9,7 +9,7 @@ public class HealManager : Damageable
     public static HealManager Instance;
 
 
-    [SerializeField] private int _defaultMaxHealth = 6;
+    [SerializeField] public int _defaultMaxHealth = 6;
     [SerializeField] public HealthDisplay healthDisplay;
 
     public bool isDie = false;
@@ -19,6 +19,7 @@ public class HealManager : Damageable
         else Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        health = _defaultMaxHealth;
     }
     private void OnEnable()
     {
@@ -36,32 +37,21 @@ public class HealManager : Damageable
 
         if (healthDisplay != null && GameManager.instance != null)
         {
-            // 3. Cập nhật lại biến máu (đề phòng bị lỗi)
-            health = GameManager.instance.currentHealth;
 
             // 4. Vẽ lại số tim (Setup) theo Max Health
-            healthDisplay.Setup(GameManager.instance.currentHealth);
+            healthDisplay.Setup(_defaultMaxHealth);
 
             // 5. Cập nhật trạng thái tim (Update) theo máu hiện tại
             healthDisplay.UpdateHp(health);
         }
-        else
-        {
-            // phòng trường hợp gamemanager không chay
-            health = _defaultMaxHealth;
-            //if(healthDisplay != null)
-            //{
-            //    healthDisplay.Setup(_defaultMaxHealth);
-            //}
-        }
     }
     protected override void Hit()
     {
-    
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.currentHealth = health;
-        }
+        healthDisplay.UpdateHp(health);
+    }
+    public void Healing()
+    {
+        health += 1;
         healthDisplay.UpdateHp(health);
     }
     protected override void Die()

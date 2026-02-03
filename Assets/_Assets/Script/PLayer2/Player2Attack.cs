@@ -16,4 +16,10 @@ public class Player2Attack : PlayerAttack
         animator.SetTrigger("AttackUp");
         AudioManager.Instance.PlaySfx(player2Audio.attackUpSound);
     }
+    protected override void UseSkill()
+    {
+        if (HealManager.Instance.health >= HealManager.Instance._defaultMaxHealth) return;
+        animator.SetTrigger("SkillF");
+        HealManager.Instance.Healing();
+    }
 }

@@ -208,7 +208,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6029932313391288869
 MonoBehaviour:
@@ -226,11 +226,11 @@ MonoBehaviour:
   player_Anim: {fileID: 0}
   baseSpeed: 2
   speed: 0
-  jumpForce: 3.5
+  jumpForce: 3.2
   canDoubleJump: 0
   dashSpeed: 5
   dashDuration: 0.2
-  dashCooldown: 0.5
+  dashCooldown: 2
   isDashing: 0
   direction: {x: 0, y: 0}
   groundCheck: {fileID: 3553404408968242933}
@@ -239,9 +239,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _isGrounded: 0
-  wallCheckUp: {fileID: 0}
-  wallCheckDown: {fileID: 0}
-  wallDistance: 0.1
   isJump: 0
 --- !u!114 &3016686816768933056
 MonoBehaviour:

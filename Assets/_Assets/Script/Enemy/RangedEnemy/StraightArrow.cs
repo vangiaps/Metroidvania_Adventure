@@ -10,13 +10,4 @@ public class StraightArrow : EnemyAttack
     {
         Destroy(gameObject, lifeTime);
     }
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        PlayerDamageReceiver playerDamageReceiver = collision.gameObject.GetComponent<PlayerDamageReceiver>();
-
-        if (playerDamageReceiver != null)
-        {
-            playerDamageReceiver.OnHit(damage);
-        }
-    }
 }

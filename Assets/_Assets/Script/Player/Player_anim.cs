@@ -39,6 +39,7 @@ public class Player_anim : MonoBehaviour
     {
         animator.SetBool("Dash", isDash);
     }
+
     //ham sua loi khi cham dat nhung animation khong chuyen tu jump sang fall hay idle
     public void TriggerIsGround()
     {

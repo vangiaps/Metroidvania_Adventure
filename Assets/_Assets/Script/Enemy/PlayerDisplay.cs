@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// kho con quai cuoi chet no se spawn ra 1 nv moi hoac 1 item nao do 
+/// </summary>
 public class PlayerDisplay : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemyListChild = new();
@@ -21,9 +24,6 @@ public class PlayerDisplay : MonoBehaviour
     void OnTransformChildrenChanged()
     {
         UpdateChildList();
-    }
-    private void Update()
-    {
     }
     void UpdateChildList()
     {

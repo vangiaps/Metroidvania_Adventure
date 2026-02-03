@@ -41,6 +41,10 @@ public class PlayerAttack : MonoBehaviour
         {
             this.AttackDown();
         }
+        if (InputManager.Instance.Skill() && !animation_Event.IsAttack)
+        {
+            UseSkill();
+        }
 
     }
 

@@ -30,6 +30,8 @@ public class MoveMent : MonoBehaviour
     {
         this.Redirect();
     }
+
+    // di chuyen giua 2 diem
     public void Redirect()
     {
         if (transform.position.x != positionA.x && isPos1)
@@ -51,6 +53,7 @@ public class MoveMent : MonoBehaviour
             isPos1 = true;
         }
     }
+    // thoi gian dung cho roi di chuyen tiep
     public virtual void StandWait()
     {
         

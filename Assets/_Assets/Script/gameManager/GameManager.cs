@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] private GameObject charater2;
+    [SerializeField] private GameObject charaters;
+    [SerializeField] private List<GameObject> listCharaters = new();
 
-    public int _maxHealth = 6;
-    public int currentHealth;
+    public int coin = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -22,18 +23,41 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        currentHealth = _maxHealth;
-
     }
-    private void Start()
+    private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
-    public void displayCharater()
+    protected void OnDisable()
     {
-        if (charater2 != null)
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    protected void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ClearList();
+        ApproveTheList();
+    }
+    private void ApproveTheList()
+    {
+        if (charaters == null)
         {
-            charater2.SetActive(true);
+            charaters = GameObject.Find("Charaters");
+        }
+        foreach (Transform child in charaters.transform)
+        {
+            listCharaters.Add(child.gameObject);
+        }
+    }
+    private void ClearList()
+    {
+        listCharaters.Clear();
+    }
+    public void displayCharater(int index)
+    {
+        if (listCharaters[index] != null)
+        {
+            listCharaters[index].SetActive(true);
+            CharacterSwitcher.instance.unlockCharaters[index] = true;
         }
     }
 

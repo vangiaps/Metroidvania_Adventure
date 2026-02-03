@@ -5,11 +5,19 @@ using UnityEngine;
 
 public class CharacterSwitcher : MonoBehaviour
 {
+    public static CharacterSwitcher instance;
     [SerializeField] private List<GameObject> player;
     private int currentIndex = 0;
+    public List<bool> unlockCharaters = new();
 
-    private void Awake()
+    private bool charater1 = true;
+    private bool charater2 = false;
+    private bool charater3 = false;
+
+    private void Start()
     {
+        instance = instance != null ? instance : this;
+        DontDestroyOnLoad(gameObject);
         foreach (var p in player)
         {
             if (p != null) p.SetActive(false);
@@ -19,13 +27,16 @@ public class CharacterSwitcher : MonoBehaviour
             player[0].SetActive(true);
             currentIndex = 0;
         }
-        DontDestroyOnLoad(gameObject);
+        unlockCharaters.Add(charater1);
+        unlockCharaters.Add(charater2);
+        unlockCharaters.Add(charater3);
+        for (int i = 0; i < unlockCharaters.Count; i++) { Debug.Log("Flag " + i + ": " + unlockCharaters[i]); }
     }
     private void Update()
     {
-        if (InputManager.Instance.one()) ActivePlayer(0);
-        if (InputManager.Instance.two()) ActivePlayer(1);
-        if (InputManager.Instance.three()) ActivePlayer(2);
+        if (InputManager.Instance.one() && unlockCharaters[0]) ActivePlayer(0);
+        if (InputManager.Instance.two() && unlockCharaters[1]) ActivePlayer(1);
+        if (InputManager.Instance.three() && unlockCharaters[2]) ActivePlayer(2);
     }
     private void ActivePlayer(int newIndex)
     {

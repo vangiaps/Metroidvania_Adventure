@@ -9,7 +9,7 @@ public class EnemyLongRangeAttack : MonoBehaviour
     private Animator animator;
     [SerializeField] private float attackRange = 2f;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject arroePrefab;
     [SerializeField] private MoveMent moveMent;
     private float arrowSpeed = 3f;
@@ -37,7 +37,6 @@ public class EnemyLongRangeAttack : MonoBehaviour
         DetectPlayer();
         if (playerPosition != null)
         {
-            Debug.Log(currentScale);
             Attack();
         }
     }
@@ -72,7 +71,7 @@ public class EnemyLongRangeAttack : MonoBehaviour
             float scale = distance > 0 ? 1 : -1;
             moveMent.SetScale(scale);
             // tinh huong tu sung -> player
-            direction = playerPosition.position - firePoint.position;
+            direction = playerPosition.position - attackPoint.position;
             // goi anim -> goi ham shoot
             animator.SetTrigger("Shoot");
             lastShotTime = Time.time;
@@ -86,7 +85,7 @@ public class EnemyLongRangeAttack : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
         // sinh mui ten 
-        GameObject arrow = Instantiate(arroePrefab, firePoint.position, rotation);
+        GameObject arrow = Instantiate(arroePrefab, attackPoint.position, rotation);
 
         // gan van toc 
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
