@@ -262,9 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  numberOfCoinsToUnlock: 3
+  numberOfCoinsToUnlock: 1
   currentCoins: 0
-  animator: {fileID: 0}
+  animator: {fileID: 7145695654047472697}
+  scene: Scene2
   doorUI: {fileID: 5240651679916022473}
 --- !u!95 &7145695654047472697
 Animator:

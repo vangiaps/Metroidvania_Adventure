@@ -58,12 +58,12 @@ public class MEMoveMent : MoveMent
         if(hitRight || hitLeft)
         {
             detected = true;
-            if (hitRight != null)
+            if (hitRight.collider != null)
             {
                 playerPos = hitRight.transform;
                 MoveTo(playerPos);
             }
-            else if (hitLeft != null)
+            else if (hitLeft.collider != null)
             {
                 playerPos = hitLeft.transform;
                 MoveTo(playerPos);
